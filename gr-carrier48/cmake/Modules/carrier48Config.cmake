@@ -1,0 +1,30 @@
+INCLUDE(FindPkgConfig)
+PKG_CHECK_MODULES(PC_CARRIER48 carrier48)
+
+FIND_PATH(
+    CARRIER48_INCLUDE_DIRS
+    NAMES carrier48/api.h
+    HINTS $ENV{CARRIER48_DIR}/include
+        ${PC_CARRIER48_INCLUDEDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/include
+          /usr/local/include
+          /usr/include
+)
+
+FIND_LIBRARY(
+    CARRIER48_LIBRARIES
+    NAMES gnuradio-carrier48
+    HINTS $ENV{CARRIER48_DIR}/lib
+        ${PC_CARRIER48_LIBDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/lib
+          ${CMAKE_INSTALL_PREFIX}/lib64
+          /usr/local/lib
+          /usr/local/lib64
+          /usr/lib
+          /usr/lib64
+)
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(CARRIER48 DEFAULT_MSG CARRIER48_LIBRARIES CARRIER48_INCLUDE_DIRS)
+MARK_AS_ADVANCED(CARRIER48_LIBRARIES CARRIER48_INCLUDE_DIRS)
+

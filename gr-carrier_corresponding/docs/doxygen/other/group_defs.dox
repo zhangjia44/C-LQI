@@ -1,0 +1,7 @@
+/*!
+ * \defgroup block GNU Radio CARRIER_CORRESPONDING C++ Signal Processing Blocks
+ * \brief All C++ blocks that can be used from the CARRIER_CORRESPONDING GNU Radio
+ *        module are listed here or in the subcategories below.
+ *
+ */
+

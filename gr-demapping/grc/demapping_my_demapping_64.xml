@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<block>
+  <name>my_demapping_64</name>
+  <key>demapping_my_demapping_64</key>
+  <category>[demapping]</category>
+  <import>import demapping</import>
+  <make>demapping.my_demapping_64($carrier_number)</make>
+  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
+       Sub-nodes:
+       * name
+       * key (makes the value accessible as $keyname, e.g. in the make node)
+       * type -->
+  <param>
+    <name>carrier_number</name>
+    <key>carrier_number</key>
+    <value>64</value>
+    <type>int</type>
+  </param>
+
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+    <vlen>64</vlen>
+  </sink>
+
+  <!-- Make one 'source' node per output. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <source>
+    <name>out</name>
+    <type>byte</type>
+    <vlen>64</vlen>
+  </source>
+</block>

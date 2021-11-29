@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<block>
+  <name>carrier_correponding</name>
+  <key>carrier_corresponding_carrier_correponding</key>
+  <category>[carrier_corresponding]</category>
+  <import>import carrier_corresponding</import>
+  <make>carrier_corresponding.carrier_correponding()</make>
+  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
+       Sub-nodes:
+       * name
+       * key (makes the value accessible as $keyname, e.g. in the make node)
+       * type -->
+
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+    <vlen>64</vlen>
+  </sink>
+
+  <!-- Make one 'source' node per output. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <source>
+    <name>out</name>
+    <type>byte</type>
+    <vlen>64</vlen>
+  </source>
+</block>

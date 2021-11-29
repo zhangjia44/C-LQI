@@ -1,0 +1,30 @@
+INCLUDE(FindPkgConfig)
+PKG_CHECK_MODULES(PC_BYTETO6BIT byteTo6bit)
+
+FIND_PATH(
+    BYTETO6BIT_INCLUDE_DIRS
+    NAMES byteTo6bit/api.h
+    HINTS $ENV{BYTETO6BIT_DIR}/include
+        ${PC_BYTETO6BIT_INCLUDEDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/include
+          /usr/local/include
+          /usr/include
+)
+
+FIND_LIBRARY(
+    BYTETO6BIT_LIBRARIES
+    NAMES gnuradio-byteTo6bit
+    HINTS $ENV{BYTETO6BIT_DIR}/lib
+        ${PC_BYTETO6BIT_LIBDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/lib
+          ${CMAKE_INSTALL_PREFIX}/lib64
+          /usr/local/lib
+          /usr/local/lib64
+          /usr/lib
+          /usr/lib64
+)
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(BYTETO6BIT DEFAULT_MSG BYTETO6BIT_LIBRARIES BYTETO6BIT_INCLUDE_DIRS)
+MARK_AS_ADVANCED(BYTETO6BIT_LIBRARIES BYTETO6BIT_INCLUDE_DIRS)
+

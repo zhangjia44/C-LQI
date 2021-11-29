@@ -1,0 +1,11 @@
+This is the manual64to7-write-a-block package meant as a guide to building
+out-of-tree packages. To use the manual64to7 blocks, the Python namespaces
+is in 'manual64to7', which is imported as:
+
+    import manual64to7
+
+See the Doxygen documentation for details about the blocks available
+in this package. A quick listing of the details can be found in Python
+after importing by using:
+
+    help(manual64to7)

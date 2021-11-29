@@ -1,0 +1,30 @@
+INCLUDE(FindPkgConfig)
+PKG_CHECK_MODULES(PC_DECONVOLUTION deconvolution)
+
+FIND_PATH(
+    DECONVOLUTION_INCLUDE_DIRS
+    NAMES deconvolution/api.h
+    HINTS $ENV{DECONVOLUTION_DIR}/include
+        ${PC_DECONVOLUTION_INCLUDEDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/include
+          /usr/local/include
+          /usr/include
+)
+
+FIND_LIBRARY(
+    DECONVOLUTION_LIBRARIES
+    NAMES gnuradio-deconvolution
+    HINTS $ENV{DECONVOLUTION_DIR}/lib
+        ${PC_DECONVOLUTION_LIBDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/lib
+          ${CMAKE_INSTALL_PREFIX}/lib64
+          /usr/local/lib
+          /usr/local/lib64
+          /usr/lib
+          /usr/lib64
+)
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(DECONVOLUTION DEFAULT_MSG DECONVOLUTION_LIBRARIES DECONVOLUTION_INCLUDE_DIRS)
+MARK_AS_ADVANCED(DECONVOLUTION_LIBRARIES DECONVOLUTION_INCLUDE_DIRS)
+

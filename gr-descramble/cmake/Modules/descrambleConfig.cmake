@@ -1,0 +1,30 @@
+INCLUDE(FindPkgConfig)
+PKG_CHECK_MODULES(PC_DESCRAMBLE descramble)
+
+FIND_PATH(
+    DESCRAMBLE_INCLUDE_DIRS
+    NAMES descramble/api.h
+    HINTS $ENV{DESCRAMBLE_DIR}/include
+        ${PC_DESCRAMBLE_INCLUDEDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/include
+          /usr/local/include
+          /usr/include
+)
+
+FIND_LIBRARY(
+    DESCRAMBLE_LIBRARIES
+    NAMES gnuradio-descramble
+    HINTS $ENV{DESCRAMBLE_DIR}/lib
+        ${PC_DESCRAMBLE_LIBDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/lib
+          ${CMAKE_INSTALL_PREFIX}/lib64
+          /usr/local/lib
+          /usr/local/lib64
+          /usr/lib
+          /usr/lib64
+)
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(DESCRAMBLE DEFAULT_MSG DESCRAMBLE_LIBRARIES DESCRAMBLE_INCLUDE_DIRS)
+MARK_AS_ADVANCED(DESCRAMBLE_LIBRARIES DESCRAMBLE_INCLUDE_DIRS)
+
